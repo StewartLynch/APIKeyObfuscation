@@ -21,7 +21,7 @@ import SwiftUI
 struct WhatWordApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ThesaurusView()
         }
     }
 }

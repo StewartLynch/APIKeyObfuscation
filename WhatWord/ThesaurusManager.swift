@@ -20,7 +20,7 @@ import Foundation
 
 @MainActor
 @Observable
-class ThesaurusViewModel {
+class ThesaurusManager {
     var word: String = ""
     var definition: String = ""
     var synonyms: [String] = []

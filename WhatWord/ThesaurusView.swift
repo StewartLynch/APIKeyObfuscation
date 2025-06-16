@@ -17,29 +17,29 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @State private var viewModel = ThesaurusViewModel()
+struct ThesaurusView: View {
+    @State private var manager = ThesaurusManager()
     @FocusState var isFocused: Bool
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading) {
                 HStack {
-                    TextField("Enter a word then tap 'Search'", text: $viewModel.word)
+                    TextField("Enter a word then tap 'Search'", text: $manager.word)
                         .textFieldStyle(.roundedBorder)
                         .autocapitalization(.none)
                         .submitLabel(.search)
                         .focused($isFocused)
                         .onSubmit {
-                            Task { await viewModel.search() }
+                            Task { await manager.search() }
                         }
                         .onChange(of: isFocused) {
-                            if !isFocused && !viewModel.word.isEmpty {
-                                Task { await viewModel.search() }
+                            if !isFocused && !manager.word.isEmpty {
+                                Task { await manager.search() }
                             }
                         }
-                    if !viewModel.word.isEmpty {
+                    if !manager.word.isEmpty {
                         Button {
-                            viewModel.reset()
+                            manager.reset()
                         } label: {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundColor(.gray)
@@ -47,30 +47,29 @@ struct ContentView: View {
                         .buttonStyle(.plain)
                     }
                 }
-                if let error = viewModel.errorMessage {
+                if let error = manager.errorMessage {
                     Text(error)
                         .foregroundColor(.red)
                 }
-
-                if !viewModel.definition.isEmpty {
+                if !manager.definition.isEmpty {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Definition")
                             .font(.title3)
                             .bold()
-                        Text(viewModel.definition)
+                        Text(manager.definition)
                     }
-
-                    if !viewModel.synonyms.isEmpty {
+                    Divider()
+                    if !manager.synonyms.isEmpty {
                         Text("Synonyms:")
                             .font(.title3)
                             .bold()
                     }
                 }
 
-                if !viewModel.synonyms.isEmpty {
+                if !manager.synonyms.isEmpty {
                     ScrollView {
                         VStack(alignment: .leading, spacing: 4) {
-                            ForEach(viewModel.synonyms, id: \.self) { synonym in
+                            ForEach(manager.synonyms, id: \.self) { synonym in
                                 Text("• \(synonym)")
                             }
                         }
@@ -78,7 +77,7 @@ struct ContentView: View {
                     }
                     .scrollBounceBehavior(.basedOnSize)
                 }
-                if viewModel.synonyms.isEmpty {
+                if manager.synonyms.isEmpty {
                     Spacer()
                 }
             }
@@ -93,5 +92,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ThesaurusView()
 }
