@@ -26,7 +26,7 @@ class ThesaurusManager {
     var synonyms: [String] = []
     var errorMessage: String?
 
-    private let apiKey = "85ba19c6-5ec6-4336-88c1-4f887edfdda2"
+    private let apiKey = "<<Your API Key>>"
 
     func search() async {
         guard !word.trimmingCharacters(in: .whitespaces).isEmpty else { return }
