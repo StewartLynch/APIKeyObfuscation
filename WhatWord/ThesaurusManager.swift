@@ -25,8 +25,10 @@ class ThesaurusManager {
     var definition: String = ""
     var synonyms: [String] = []
     var errorMessage: String?
-
-    private let apiKey = "<<Your API Key>>"
+    // Register and get Collegiate Thesaurus API key from https://dictionaryapi.com/
+    // Replace the <<Your API Key>> within the quotes with your key
+    
+    private let apiKey = "<<Your API Key>>" // After obfuscation, this will be replaced
 
     func search() async {
         guard !word.trimmingCharacters(in: .whitespaces).isEmpty else { return }
