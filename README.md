@@ -90,7 +90,8 @@ You will not find that apiKey string in the compiled app's embedded strings.  It
 
 ## Exclude the ObfuscationLiterals.swift file from source control
 
-The final step is to exclude the ObfuscationLiterals.swift file from source control.  In the video, at this pooint
+The final step is to exclude the ObfuscationLiterals.swift file from source control.  In the video, at this point
+
 [16:10](https://www.youtube.com/watch?v=FfXK0IrX0p0&t=970s) Excluding the YAML file from Source Control
 
 How to exclude the YAML file from Source Control.  The process is identical, except that now, you will be excluding the ObfuscationLiterals.swift file rather than the **confidential.yml** file.
