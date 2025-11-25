@@ -17,6 +17,7 @@
 
 
 import Foundation
+import ConfidentialKit
 
 @MainActor
 @Observable
@@ -28,7 +29,7 @@ class ThesaurusManager {
     // Register and get Collegiate Thesaurus API key from https://dictionaryapi.com/
     // Replace the <<Your API Key>> within the quotes with your key
     
-    private let apiKey = "<<Your API Key>>" // After obfuscation, this will be replaced
+    private let apiKey = "\(Secrets.$apiKey)" // After obfuscation, this will be replaced
 
     func search() async {
         guard !word.trimmingCharacters(in: .whitespaces).isEmpty else { return }
