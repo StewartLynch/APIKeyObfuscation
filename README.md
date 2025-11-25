@@ -26,13 +26,6 @@ You now only need to install the **SwiftUI Confidential** package and not the pl
 
 Add Swift Confidential to your SwiftPM or Xcode project. See the relevant installation instructions in the expandable sections below.
 
-<details>
-<summary>
-    <strong>
-        <a href="https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app">Xcode</a>
-    </strong>
-</summary>
-
 1. Select `File` > `Add Package Dependencies...`.
 2. In the `Search or Enter Package URL` field, enter the following URL:
    ```
